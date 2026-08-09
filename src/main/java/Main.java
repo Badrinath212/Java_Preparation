@@ -1,3 +1,4 @@
+import oops.Author;
 import oops.Car;
 import oops.Remote;
 import oops.TV;
@@ -25,6 +26,7 @@ public class Main {
 
         car.startEngine();
 
+        @Author(name = "John", email = "john@gmail.com", version = 2)
         Employee employee = new Employee("John", 30, "IT");
         System.out.println(employee.name());
         System.out.println(employee.age());
