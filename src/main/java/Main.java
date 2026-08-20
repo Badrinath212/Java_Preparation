@@ -20,6 +20,9 @@ public class Main {
         
         
         Car car = new Car("Badri");
+        System.out.println(car.toString());
+        System.out.println(car.hashCode());
+
         Vehicle vehicle = new Vehicle(car);
         
         // Need to invoke the parant consturctor using super keyword & attributes passing also
