@@ -170,6 +170,14 @@ public class StreamsTest {
         isNoneMatching = employees.stream().noneMatch(e -> e.getDepartment().equals("IOT"));
         System.out.println("Is none matching: " + isNoneMatching);
 
+
+        System.out.println("Implementing parallel stream:");
+
+        List<Integer> list3 = List.of(1,2,3,4,5,6,7,8,9);
+
+        list3.parallelStream().forEach(ele ->
+            System.out.print(ele + " ")
+        );
     }
     
 }
