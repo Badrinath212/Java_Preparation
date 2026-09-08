@@ -1,8 +1,10 @@
 package Multithreading;
 
+import java.util.concurrent.atomic.AtomicLong;
+
 class Test {
     private volatile boolean isRunning = true;
-    private volatile long count = 0;
+    private AtomicLong count = new AtomicLong(0);
 
     public void setRunning() {
         isRunning = false;
@@ -10,7 +12,7 @@ class Test {
 
     public void greet() {
         while(isRunning) {
-            count+=1;
+            count.incrementAndGet();
         }
         System.out.println("Thread " + Thread.currentThread().getName() + " has greeted " + count + " times.");
     }
