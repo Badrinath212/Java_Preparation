@@ -1,8 +1,11 @@
 package IO;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 
 public class FileIOTest {
@@ -35,15 +38,24 @@ public class FileIOTest {
             // file.renameTo(file2);
             // System.out.println("File renamed");
 
-            try (FileInputStream fileInputStream = new FileInputStream(file);
-                InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, StandardCharsets.UTF_8);
-                BufferedReader bufferedReader = new BufferedReader(inputStreamReader)) {
+            // try (FileInputStream fileInputStream = new FileInputStream(file);
+            //     InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, StandardCharsets.UTF_8);
+            //     BufferedReader bufferedReader = new BufferedReader(inputStreamReader)) {
 
-                int read;
-                char[] data = new char[1024];
-                while ((read = bufferedReader.read(data, 0, 1024)) != -1) {
-                    System.out.print(new String(data, 0, read));
-                }
+            //     int read;
+            //     char[] data = new char[1024];
+            //     while ((read = bufferedReader.read(data, 0, 1024)) != -1) {
+            //         System.out.print(new String(data, 0, read));
+            //     }
+            // }
+            try (FileOutputStream fos = new FileOutputStream(file, true);
+                OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
+                BufferedWriter bw = new BufferedWriter(osw)) {
+
+                bw.write("Hello World");
+                bw.newLine();
+                System.out.println("Data written to file");
+
             }
         } catch (Exception e) {
             e.printStackTrace();
